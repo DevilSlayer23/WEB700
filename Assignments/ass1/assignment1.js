@@ -8,9 +8,9 @@
 *
 ********************************************************************************/
 
-serverVerbs = ['GET','GET','GET','POST','GET','POST']
-serverPaths = ["/","/about","/contact",'/login',"/panel","/logout"]
-serverResponses = ["Welcome to WEB700 Assignement 1","This assignment was prepared by Sagar Thapa","Sagar Thapa:sthapa67@myseneca.ca","User Logged In","Main Panel","Logout Complete"]
+const serverVerbs = ['GET','GET','GET','POST','GET','POST']
+const serverPaths = ["/","/about","/contact",'/login',"/panel","/logout"]
+const serverResponses = ["Welcome to WEB700 Assignement 1","This assignment was prepared by Sagar Thapa","Sagar Thapa:sthapa67@myseneca.ca","User Logged In","Main Panel","Logout Complete"]
 
 var httpRequest = function (httpVerb, path) {
     
@@ -33,19 +33,19 @@ function getRandomInt(max) {
   }
 
 var automateTests = function () {
+    
+    var randomRequest = function (){
+        const testVerbs = ["GET",'POST']
+        const testPaths = ['/','/about','/contact','/login','/panel','/randomPath1','/randomPath2']
+        let testVerb = testVerbs[getRandomInt(testVerbs.length)]
+        let testPath = testPaths[getRandomInt(testPaths.length)]
+        // console.log(`Testing ${testVerb} in ${testPath}...`)
+        console.log(httpRequest(testVerb,testPath))
+    }
 
-var randomRequest = function (){
-testVerbs = ["GET",'POST']
-testPaths = ['/','/about','/contact','/login','/panel','/randomPath1','/randomPath2']
-testVerb = testVerbs[getRandomInt(testVerbs.length)]
-testPath = testPaths[getRandomInt(testPaths.length)]
-// console.log(`Testing ${testVerb} in ${testPath}...`)
-console.log(httpRequest(testVerb,testPath))
-}
-
-setInterval(() => {
-   randomRequest()
-}, 1000);
+    setInterval(() => {
+    randomRequest()
+    }, 1000);
 }
 
 automateTests();
